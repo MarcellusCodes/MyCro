@@ -3,7 +3,7 @@ import Head from "next/head";
 const Container = ({ children }) => {
   return (
     <>
-      <div>
+      <div className="space-y-5">
         <Head>
           <link
             href="https://fonts.googleapis.com/css?family=Zeyada|Fresca"

@@ -3,11 +3,9 @@ const Input = () => {
   return (
     <>
       <motion.input
-        whileHover={{ borderColor: "#FF0000", borderWidth: "2px" }}
-        whileTap={{
-          BorderColor: "#FF0000",
-        }}
-        className="border-2 border-red-300"
+        whileHover={{ backgroundColor: "#93C5FD" }}
+        whileFocus={{ backgroundColor: "#FFFFFF" }}
+        className="border-2 border-blue-500 focus:outline-none bg-gray-200 p-3 rounded-lg shadow-lg w-full"
       />
     </>
   );
