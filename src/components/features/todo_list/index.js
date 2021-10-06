@@ -3,18 +3,19 @@ import Container from "./components/container";
 import Input from "./components/input";
 import Button from "./components/button";
 import List from "./components/list";
+import Form from "./components/form";
+import { StoreProvider } from "./stores/store";
 
 const TodoList = () => {
   return (
     <>
-      <Container>
-        <Branding />
-        <div className="flex flex-row justify-center items-center">
-          <Input />
-          <Button />
-        </div>
-        <List />
-      </Container>
+      <StoreProvider>
+        <Container>
+          <Branding />
+          <Form />
+          <List />
+        </Container>
+      </StoreProvider>
     </>
   );
 };

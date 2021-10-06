@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-const Button = () => {
+const Button = ({ onClick }) => {
   const IconMotion = {
     rest: {
       rotate: 0,
@@ -22,6 +22,7 @@ const Button = () => {
         animate="rest"
         whileTap="active"
         className="shadow-lg rounded-lg p-2 flex justify-center items-center border-2 border-blue-500 ml-1 origin-center"
+        type="submit"
       >
         <motion.svg
           style={{
