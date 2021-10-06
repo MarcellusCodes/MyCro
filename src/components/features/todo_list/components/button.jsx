@@ -1,29 +1,33 @@
 import { motion } from "framer-motion";
-
-const IconMotion = {
-  rest: {
-    rotate: 0,
-  },
-  hover: {
-    rotate: -90,
-  },
-  active: {
-    rotate: 180,
-  },
-};
+import { useState } from "react";
 
 const Button = () => {
+  const IconMotion = {
+    rest: {
+      rotate: 0,
+      transition: { type: "spring", bounce: 0.5, stiffness: 200 },
+    },
+    active: {
+      rotate: 90,
+      scale: 0.9,
+      transition: { type: "spring", bounce: 0.5, stiffness: 200 },
+    },
+  };
+
   return (
     <>
       <motion.button
         initial="rest"
         whileHover="hover"
         animate="rest"
-        whileActive="active"
+        whileTap="active"
         className="shadow-lg rounded-lg p-2 flex justify-center items-center border-2 border-blue-500 ml-1 origin-center"
       >
         <motion.svg
-          style={{ originX: "50%", originY: "50%" }}
+          style={{
+            originX: "50%",
+            originY: "50%",
+          }}
           variants={IconMotion}
           height="33"
           viewBox="0 0 426.66667 426.66667"

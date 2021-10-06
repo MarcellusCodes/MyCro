@@ -2,6 +2,7 @@ import Branding from "./components/branding";
 import Container from "./components/container";
 import Input from "./components/input";
 import Button from "./components/button";
+import List from "./components/list";
 
 const TodoList = () => {
   return (
@@ -12,6 +13,7 @@ const TodoList = () => {
           <Input />
           <Button />
         </div>
+        <List />
       </Container>
     </>
   );
