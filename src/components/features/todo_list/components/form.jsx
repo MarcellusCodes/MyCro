@@ -4,16 +4,17 @@ import { useContext } from "react";
 import { StoreContext } from "../stores/store";
 
 const Form = () => {
-  const { todos, setTodos } = useContext(StoreContext);
+  const { todos, setTodos, input, setInput } = useContext(StoreContext);
   const addTodo = (event) => {
     event.preventDefault();
-    setTodos([...todos, { id: todos.length, todo: "Test" }]);
+    const enteredTodo = input;
+    setTodos([...todos, { id: todos.length + 1, todo: enteredTodo }]);
   };
   return (
     <>
       <form onSubmit={addTodo}>
         <div className="flex flex-row justify-center items-center">
-          <Input />
+          <Input input={input} setInput={setInput} />
           <Button />
         </div>
       </form>

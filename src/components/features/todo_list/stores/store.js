@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 const StoreContext = React.createContext();
 
@@ -18,8 +18,16 @@ const StoreProvider = (props) => {
     },
   ]);
 
+  const [input, setInput] = useState();
+
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
   return (
-    <StoreContext.Provider value={{ todos, setTodos }}>
+    <StoreContext.Provider
+      value={{ todos, setTodos, deleteTodo, input, setInput }}
+    >
       {props.children}
     </StoreContext.Provider>
   );
