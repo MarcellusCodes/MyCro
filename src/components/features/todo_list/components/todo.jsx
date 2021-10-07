@@ -1,6 +1,29 @@
-import { motion, useTransform, useMotionValue } from "framer-motion";
+import {
+  motion,
+  useTransform,
+  useMotionValue,
+  AnimatePresence,
+} from "framer-motion";
 import { useState, useRef } from "react";
 import Edit from "../assets/icons/edit";
+
+const editIconMotion = {
+  rest: {
+    rotate: -90,
+    scale: 0.9,
+    transition: { type: "spring", bounce: 0.5, stiffness: 200 },
+  },
+  animate: {
+    rotate: 0,
+    scale: 1,
+    transition: { type: "spring", bounce: 0.5, stiffness: 200 },
+  },
+  active: {
+    rotate: -90,
+    scale: 1.1,
+    transition: { type: "spring", bounce: 0.5, stiffness: 200 },
+  },
+};
 
 const Todo = ({ data }) => {
   const x = useMotionValue(0);
@@ -61,7 +84,28 @@ const Todo = ({ data }) => {
         }}
       >
         <p className="text-2xl">{data.todo}</p>
-        {editable ? <Edit /> : ""}
+        <AnimatePresence exitBeforeEnter>
+          {editable ? (
+            <motion.button
+              initial="rest"
+              animate="animate"
+              whileTap="active"
+              variants={editIconMotion}
+              exit={{
+                rotate: 0,
+                scale: 0,
+                transition: { type: "spring", bounce: 0.5, stiffness: 200 },
+              }}
+              onClick={() => {
+                setEditable(false);
+              }}
+            >
+              <Edit />
+            </motion.button>
+          ) : (
+            ""
+          )}
+        </AnimatePresence>
       </motion.div>
     </>
   );
