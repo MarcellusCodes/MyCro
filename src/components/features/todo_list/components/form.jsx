@@ -9,6 +9,7 @@ const Form = () => {
     event.preventDefault();
     const enteredTodo = input;
     setTodos([...todos, { id: todos.length + 1, todo: enteredTodo }]);
+    setInput("");
   };
   return (
     <>
