@@ -96,66 +96,66 @@ const Todo = ({ data }) => {
   };
   return (
     <>
-        <motion.div
-          key={data.id}
-          initial={{
-            transition: { type: "spring", bounce: 0.5, stiffness: 200 },
-            opacity: 0,
-            y: -100,
-          }}
-          animate={{
-            transition: { type: "spring", bounce: 0.5, stiffness: 200 },
-            opacity: 1,
-            y: 0,
-          }}
-          exit={{
-            transition: { type: "spring", bounce: 0.5, stiffness: 200 },
-            opacity: 0,
-            y: -100,
-          }}
-          contentEditable={editable}
-          drag
-          dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-          dragElastic={0.5}
-          onDragStart={(event, info) => {
-            setDragStartValueX(info.point.x);
-            setDragStartValueY(info.point.y);
-          }}
-          onDragEnd={(event, info) => {
-            checkTodoAction(info.point.x, info.point.y, data.id);
-          }}
-          className={`bg-white p-4 border-2 ${
-            status ? "border-green-500" : ""
-          } w-full rounded-lg flex flex-row items-center justify-between`}
-          style={{
-            x: x,
-            backgroundColor: backgroundColor,
-            color: textColor,
-          }}
-        >
-          <motion.p className={`${status ? "line-through" : ""} text-2xl`}>
-            {data.todo}
-          </motion.p>
-          <AnimatePresence>
-            {editable ? (
-              <motion.button
-                initial="rest"
-                animate="animate"
-                whileTap="active"
-                variants={editIconMotion}
-                exit="exit"
-                onClick={() => {
-                  editTodo(input, data.id);
-                  setEditable(false);
-                }}
-              >
-                <Edit />
-              </motion.button>
-            ) : (
-              ""
-            )}
-          </AnimatePresence>
-        </motion.div>
+      <motion.div
+        initial={{
+          transition: { type: "spring", bounce: 0.5, stiffness: 200 },
+          opacity: 0,
+          y: -100,
+        }}
+        animate={{
+          transition: { type: "spring", bounce: 0.5, stiffness: 200 },
+          opacity: 1,
+          y: 0,
+        }}
+        exit={{
+          transition: { type: "spring", bounce: 0.5, stiffness: 200 },
+          opacity: 0,
+          y: -100,
+        }}
+        contentEditable={editable}
+        drag
+        dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+        dragElastic={0.5}
+        onDragStart={(event, info) => {
+          setDragStartValueX(info.point.x);
+          setDragStartValueY(info.point.y);
+        }}
+        onDragEnd={(event, info) => {
+          checkTodoAction(info.point.x, info.point.y, data.id);
+        }}
+        className={`bg-white p-4 border-2 ${
+          status ? "border-green-500" : ""
+        } w-full rounded-lg flex flex-row items-center justify-between`}
+        style={{
+          x: x,
+          backgroundColor: backgroundColor,
+          color: textColor,
+        }}
+      >
+        <motion.p layout className={`${status ? "line-through" : ""} text-2xl`}>
+          {data.todo}
+        </motion.p>
+        <AnimatePresence>
+          {editable ? (
+            <motion.button
+              key="edit"
+              initial="rest"
+              animate="animate"
+              whileTap="active"
+              variants={editIconMotion}
+              exit="exit"
+              onClick={() => {
+                editTodo(input, data.id);
+                setEditable(false);
+              }}
+            >
+              <Edit />
+            </motion.button>
+          ) : (
+            ""
+          )}
+        </AnimatePresence>
+      </motion.div>
     </>
   );
 };

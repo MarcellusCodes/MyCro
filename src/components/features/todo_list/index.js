@@ -5,6 +5,7 @@ import Button from "./components/button";
 import List from "./components/list";
 import Form from "./components/form";
 import { StoreProvider } from "./stores/store";
+import { AnimatePresence } from "framer-motion";
 
 const TodoList = () => {
   return (
@@ -13,7 +14,9 @@ const TodoList = () => {
         <Container>
           <Branding />
           <Form />
-          <List />
+          <AnimatePresence>
+            <List />
+          </AnimatePresence>
         </Container>
       </StoreProvider>
     </>

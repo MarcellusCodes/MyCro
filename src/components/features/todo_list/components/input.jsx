@@ -3,7 +3,7 @@ const Input = ({ input, setInput }) => {
   return (
     <>
       <motion.input
-        value={input}
+        value={input || ""}
         onChange={(event) => {
           setInput(event.target.value);
         }}
